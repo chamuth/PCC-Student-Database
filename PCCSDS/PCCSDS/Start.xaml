@@ -17,13 +17,7 @@
         </Grid.Background>
 
         <!-- Name of the application -->
-        <Label Content="PCC" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="80" Margin="86,106,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="180">
-            <Label.Background>
-                <SolidColorBrush Color="Gold"></SolidColorBrush>
-            </Label.Background>
-            <Label.Foreground>
-                <SolidColorBrush Color="Maroon"></SolidColorBrush>
-            </Label.Foreground>
+        <Label Content="PCC" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="80" Margin="86,106,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="180" Background="Gold" Foreground="Maroon">
         </Label>
         <Label Content="Student" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="50" Margin="86,227,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="200" Background="Gold" Foreground="Maroon"/>
         <Label Content="Database" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="50" Margin="86,309,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="230" Background="Gold" Foreground="Maroon"/>
@@ -44,7 +38,7 @@
             <local:Button x:Name="Login_btn" 
 				MouseUp="Login_btn_MouseDown" Text="Login to your account"  Type="Secondary" Margin="147,324,0,0" HorizontalAlignment="Left" Width="205" Height="40" VerticalAlignment="Top"/>
 
-            <TextBlock x:Name="contactAdmin_btn" FontFamily="Segoe UI Light" FontSize="13" Foreground="Maroon" Margin="239,520,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="214" TextDecorations="Underline" MouseDown="contactAdmin_btn_MouseDown">
+            <TextBlock x:Name="contactAdmin_btn" FontFamily="Segoe UI Light" FontSize="13" Foreground="Maroon" Margin="239,520,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="214" TextDecorations="Underline" MouseDown="contactAdmin_btn_MouseDown" Cursor="Hand">
 				Having Problems? Contact Ultra Admin
             </TextBlock>
         </Grid>
@@ -59,7 +53,7 @@
 
             <Label Foreground="Maroon"  FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,261,0,0" Content="Password:"/>
 
-            <TextBox x:Name="LoginPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,294,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+            <PasswordBox x:Name="LoginPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,294,0,0" Height="30"  IsEnabled="True" HorizontalAlignment="Left" Width="305" Style="{DynamicResource PCCSDSPasswordBox}"/>
 
             <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="84,90,0,0">
                 Login
@@ -80,11 +74,11 @@
 
             <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,244,0,0" Content="Password:"/>
 
-            <TextBox x:Name="CreatePassword"  FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,277,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+            <PasswordBox x:Name="CreatePassword"  FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,277,0,0" Height="30" Style="{DynamicResource PCCSDSPasswordBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
 
             <Label  Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,323,0,0" Content="Confirm Password:"/>
 
-            <TextBox x:Name="CreateConfirmPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,356,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+            <PasswordBox x:Name="CreateConfirmPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,356,0,0" Height="30" Style="{DynamicResource PCCSDSPasswordBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
 
             <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="84,73,0,0">
                 New Account
@@ -94,6 +88,5 @@
             </local:Button>
             <local:Button x:Name="SignUpCancelButton" MouseUp="SignUpCancelButton_MouseUp" Type="Secondary"  Text="Cancel" Margin="250,437,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"></local:Button>
         </Grid>
-
     </Grid>
 </Window>
