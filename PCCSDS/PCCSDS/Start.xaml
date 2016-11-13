@@ -6,17 +6,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PCCSDS"
         mc:Ignorable="d" ResizeMode="NoResize"
-		WindowStyle="SingleBorderWindow" Title="Start" Height="600" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+		WindowStyle="SingleBorderWindow" Title="PCC Student Database Systems" Height="600" Width="900" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-		<!-- Grid Background-->
+        <!-- Grid Background-->
         <Grid.Background>
             <LinearGradientBrush>
                 <GradientStop Color="Maroon" Offset="0"></GradientStop>
                 <GradientStop Color="Firebrick" Offset="1"></GradientStop>
-			</LinearGradientBrush>
-		</Grid.Background>
-		
-		<!-- Components inside the Grid -->
-    
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Name of the application -->
+        <Label Content="PCC" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="80" Margin="86,106,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="180">
+            <Label.Background>
+                <SolidColorBrush Color="Gold"></SolidColorBrush>
+            </Label.Background>
+            <Label.Foreground>
+                <SolidColorBrush Color="Maroon"></SolidColorBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Student" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="50" Margin="86,227,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="200" Background="Gold" Foreground="Maroon"/>
+        <Label Content="Database" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="50" Margin="86,309,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="230" Background="Gold" Foreground="Maroon"/>
+
+        <!--Version Text-->
+        <Label Content="v1.0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20" Margin="86,408,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="54" Background="Gold" Foreground="Maroon"/>
+
+        <Label FontFamily="Segoe UI Light" FontSize="10" Foreground="#7FFFFFFF" Margin="20,0,0,17" HorizontalContentAlignment="Left" Content="Copyrights © PITZ 2016" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="164" RenderTransformOrigin="0.512,0.6" VerticalContentAlignment="Bottom" x:Name="Copyrights_btn"/>
+
+        <!--Login Grid-->
+        <Grid x:Name="LoginGrid" Background="#EEE" Margin="405,0,0,0">
+            <!-- Login Content -->
+            <Label FontFamily="Segoe UI Light" FontSize="15" Foreground="Maroon" Margin="147,187,0,0" HorizontalContentAlignment="Center" Content="To continue using this software," Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+
+            <Label FontFamily="Segoe UI" FontSize="18" Foreground="Maroon" Margin="147,281,0,0" HorizontalContentAlignment="Center" Content="OR" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+
+            <local:Button x:Name="CreateAccount_btn" MouseUp="CreateAccount_btn_MouseDown" Text="Create a new Account"  Type="Primary" Margin="147,236,0,0" HorizontalAlignment="Left" Width="205" Height="40" VerticalAlignment="Top"/>
+            <local:Button x:Name="Login_btn" 
+				MouseUp="Login_btn_MouseDown" Text="Login to your account"  Type="Secondary" Margin="147,324,0,0" HorizontalAlignment="Left" Width="205" Height="40" VerticalAlignment="Top"/>
+
+            <TextBlock x:Name="contactAdmin_btn" FontFamily="Segoe UI Light" FontSize="13" Foreground="Maroon" Margin="239,520,0,0" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left" Width="214" TextDecorations="Underline" MouseDown="contactAdmin_btn_MouseDown">
+				Having Problems? Contact Ultra Admin
+            </TextBlock>
+        </Grid>
+
+        <Grid x:Name="LoginAccountGrid" Background="#EEE" Margin="894,0,0,0" Opacity="0">
+
+            <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,189,0,0">
+                Username:
+            </Label>
+
+            <TextBox x:Name="LoginUserName" FontSize="15"  VerticalContentAlignment="Center" VerticalAlignment="Top"  Margin="92,222,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+
+            <Label Foreground="Maroon"  FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,261,0,0" Content="Password:"/>
+
+            <TextBox x:Name="LoginPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,294,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+
+            <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="84,90,0,0">
+                Login
+            </Label>
+
+            <local:Button x:Name="LogInButton" Type="Primary"  Text="Log In" Margin="92,375,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" MouseUp="LogInButton_MouseUp">
+            </local:Button>
+            <local:Button x:Name="LoginCancelButton" MouseUp="Button_MouseUp" Type="Secondary"  Text="Cancel" Margin="250,375,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"></local:Button>
+        </Grid>
+
+        <Grid x:Name="CreateAccountGrid" Background="#EEE" Margin="894,0,0,0">
+
+            <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,172,0,0">
+                Username:
+            </Label>
+
+            <TextBox x:Name="CreateUserName" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,205,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+
+            <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,244,0,0" Content="Password:"/>
+
+            <TextBox x:Name="CreatePassword"  FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,277,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+
+            <Label  Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,323,0,0" Content="Confirm Password:"/>
+
+            <TextBox x:Name="CreateConfirmPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,356,0,0" Height="30" Style="{DynamicResource PCCSDSTextBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+
+            <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="84,73,0,0">
+                New Account
+            </Label>
+
+            <local:Button x:Name="SignUpBtn" Type="Primary"  Text="Create" Margin="92,437,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" MouseUp="SignUpBtn_MouseUp">
+            </local:Button>
+            <local:Button x:Name="SignUpCancelButton" MouseUp="SignUpCancelButton_MouseUp" Type="Secondary"  Text="Cancel" Margin="250,437,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144"></local:Button>
+        </Grid>
+
     </Grid>
 </Window>
