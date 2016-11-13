@@ -20,7 +20,9 @@ namespace PCCSDS
 		/// <param name="e"></param>
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
-				
+			//Start the Start.xaml first
+			Start s = new Start();
+			s.Show();
 		}
 	}
 }
