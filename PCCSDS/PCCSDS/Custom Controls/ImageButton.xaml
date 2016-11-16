@@ -11,6 +11,10 @@
             <Ellipse.Fill>
                 <SolidColorBrush Color="White"></SolidColorBrush>
 			</Ellipse.Fill>
-		</Ellipse> 
+		</Ellipse>
+
+        <Image x:Name="Image1">
+			
+		</Image>
     </Grid>
 </UserControl>

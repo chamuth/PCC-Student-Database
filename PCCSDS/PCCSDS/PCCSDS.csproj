@@ -115,6 +115,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Contact.png" />
+    <Resource Include="Resources\email.png" />
+    <Resource Include="Resources\location.png" />
+    <Resource Include="Resources\maps.png" />
+    <Resource Include="Resources\phone.png" />
+    <Resource Include="Resources\Search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -24,5 +24,9 @@ namespace PCCSDS
 		{
 			InitializeComponent();
 		}
+
+		public ImageSource Src { get; set; }
+		public string Text { get; set; }
+
 	}
 }
