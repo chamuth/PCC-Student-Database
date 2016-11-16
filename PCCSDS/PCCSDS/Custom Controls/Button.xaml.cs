@@ -24,7 +24,7 @@ namespace PCCSDS
 		public Button()
 		{
 			InitializeComponent();
-			
+
 			UpdateButton();
 		}
 
@@ -97,82 +97,67 @@ namespace PCCSDS
 
 		private void RectangularContent_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			if (IsEnabled == true)
-			{
-				DoubleAnimation OpacityAnimation = new DoubleAnimation();
-				OpacityAnimation.From = RectangularContent.Opacity;
-				OpacityAnimation.To = 0.8d;
-				OpacityAnimation.Duration = TimeSpan.FromMilliseconds(200);
 
-				RectangularContent.BeginAnimation(OpacityProperty, OpacityAnimation);
-				
-				DoubleAnimation circulator_dissappearing = new DoubleAnimation();
-				circulator_dissappearing.From = Circulator.Opacity;
-				circulator_dissappearing.To = 1;
-				circulator_dissappearing.Duration = TimeSpan.FromMilliseconds(100);
-				circulator_dissappearing.EasingFunction = new ExponentialEase();
+			DoubleAnimation OpacityAnimation = new DoubleAnimation();
+			OpacityAnimation.From = RectangularContent.Opacity;
+			OpacityAnimation.To = 0.8d;
+			OpacityAnimation.Duration = TimeSpan.FromMilliseconds(200);
 
-				Circulator.BeginAnimation(OpacityProperty, circulator_dissappearing);
+			RectangularContent.BeginAnimation(OpacityProperty, OpacityAnimation);
 
-				DoubleAnimation increment = new DoubleAnimation(0, 200, new Duration(TimeSpan.FromMilliseconds(800)));
-				increment.EasingFunction = new QuarticEase();
-				Circulator.BeginAnimation(WidthProperty, increment);
-				Circulator.BeginAnimation(HeightProperty, increment);
-			}
+			DoubleAnimation circulator_dissappearing = new DoubleAnimation();
+			circulator_dissappearing.From = Circulator.Opacity;
+			circulator_dissappearing.To = 1;
+			circulator_dissappearing.Duration = TimeSpan.FromMilliseconds(100);
+			circulator_dissappearing.EasingFunction = new ExponentialEase();
+
+			Circulator.BeginAnimation(OpacityProperty, circulator_dissappearing);
+
+			DoubleAnimation increment = new DoubleAnimation(0, 200, new Duration(TimeSpan.FromMilliseconds(800)));
+			increment.EasingFunction = new QuarticEase();
+			Circulator.BeginAnimation(WidthProperty, increment);
+			Circulator.BeginAnimation(HeightProperty, increment);
 		}
+
 
 		private void RectangularContent_MouseLeave(object sender, MouseEventArgs e)
 		{
-			if (IsEnabled == true)
-			{
-				DoubleAnimation OpacityAnimation = new DoubleAnimation();
-				OpacityAnimation.From = RectangularContent.Opacity;
-				OpacityAnimation.To = 1;
-				OpacityAnimation.Duration = TimeSpan.FromMilliseconds(200);
 
-				RectangularContent.BeginAnimation(OpacityProperty, OpacityAnimation);
+			DoubleAnimation OpacityAnimation = new DoubleAnimation();
+			OpacityAnimation.From = RectangularContent.Opacity;
+			OpacityAnimation.To = 1;
+			OpacityAnimation.Duration = TimeSpan.FromMilliseconds(200);
 
-				DoubleAnimation circulator_dissappearing = new DoubleAnimation();
-				circulator_dissappearing.From = Circulator.Opacity;
-				circulator_dissappearing.To = 0;
-				circulator_dissappearing.Duration = TimeSpan.FromMilliseconds(400);
-				circulator_dissappearing.EasingFunction = new ExponentialEase();
+			RectangularContent.BeginAnimation(OpacityProperty, OpacityAnimation);
 
-				Circulator.BeginAnimation(OpacityProperty, circulator_dissappearing);
-			}
+			DoubleAnimation circulator_dissappearing = new DoubleAnimation();
+			circulator_dissappearing.From = Circulator.Opacity;
+			circulator_dissappearing.To = 0;
+			circulator_dissappearing.Duration = TimeSpan.FromMilliseconds(400);
+			circulator_dissappearing.EasingFunction = new ExponentialEase();
+
+			Circulator.BeginAnimation(OpacityProperty, circulator_dissappearing);
 		}
+
 
 		private void RectangularContent_MouseUp(object sender, MouseButtonEventArgs e)
 		{
-			if (IsEnabled == true)
-			{
-				DoubleAnimation OpacityAnimation = new DoubleAnimation();
-				OpacityAnimation.From = RectangularContent.Opacity;
-				OpacityAnimation.To = 1;
-				OpacityAnimation.Duration = TimeSpan.FromMilliseconds(200);
+			DoubleAnimation OpacityAnimation = new DoubleAnimation();
+			OpacityAnimation.From = RectangularContent.Opacity;
+			OpacityAnimation.To = 1;
+			OpacityAnimation.Duration = TimeSpan.FromMilliseconds(200);
 
-				RectangularContent.BeginAnimation(OpacityProperty, OpacityAnimation);
+			RectangularContent.BeginAnimation(OpacityProperty, OpacityAnimation);
 
-				DoubleAnimation circulator_dissappearing = new DoubleAnimation();
-				circulator_dissappearing.From = Circulator.Opacity;
-				circulator_dissappearing.To = 0;
-				circulator_dissappearing.Duration = TimeSpan.FromMilliseconds(400);
-				circulator_dissappearing.EasingFunction = new ExponentialEase();
+			DoubleAnimation circulator_dissappearing = new DoubleAnimation();
+			circulator_dissappearing.From = Circulator.Opacity;
+			circulator_dissappearing.To = 0;
+			circulator_dissappearing.Duration = TimeSpan.FromMilliseconds(400);
+			circulator_dissappearing.EasingFunction = new ExponentialEase();
 
-				Circulator.BeginAnimation(OpacityProperty, circulator_dissappearing);
-			}
+			Circulator.BeginAnimation(OpacityProperty, circulator_dissappearing);
+
 		}
 
-		private void UserControl_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-		{
-			if (!IsEnabled)
-			{
-				RectangularContent.Fill = new SolidColorBrush(Colors.Gray);
-			}
-			else
-			{
-				UpdateButton();
-			}
-		}
 	}
 }

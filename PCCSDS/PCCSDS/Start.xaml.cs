@@ -13,16 +13,6 @@ namespace PCCSDS
 		{
 			InitializeComponent();
 			LoginGrid.Margin = new Thickness(StartWindow.Width, 0, 0, 0);
-
-			//Set the options available for you.
-			if (Properties.Settings.Default.FirstTime)
-			{
-				LogInButton.IsEnabled = false;
-			}
-			else
-			{
-				SignUpBtn.IsEnabled = false;
-			}
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -47,23 +37,36 @@ namespace PCCSDS
 		{
 			if (CreateAccount_btn.IsEnabled)
 			{
-				CreateAccountGrid.Margin = new Thickness(405, 0, 0, 0);
+				//Create a new account
+				if (!Properties.Settings.Default.FirstTime)
+				{
+					System.Windows.Forms.MessageBox.Show("PCC Student Database System does not allow you to configure multiple accounts on the same computer / server. Please use the 'Login' option to log in to your current account. If you're having problems signing to your account, please contact the Ultra Admin from the link given in the bottom right corner.", "Does not allow multiple accounts", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+				}
+				else
+				{
+					CreateAccountGrid.Margin = new Thickness(405, 0, 0, 0);
 
-				DoubleAnimation da = new DoubleAnimation();
-				da.From = 0;
-				da.To = 1;
-				da.Duration = TimeSpan.FromSeconds(1);
-				da.EasingFunction = new QuinticEase();
+					DoubleAnimation da = new DoubleAnimation();
+					da.From = 0;
+					da.To = 1;
+					da.Duration = TimeSpan.FromSeconds(1);
+					da.EasingFunction = new QuinticEase();
 
-				SignUpCancelButton.IsEnabled = true;
+					SignUpCancelButton.IsEnabled = true;
 
-				CreateAccountGrid.BeginAnimation(OpacityProperty, da);
+					CreateAccountGrid.BeginAnimation(OpacityProperty, da);
+				}
 			}
 		}
 
 		private void Login_btn_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			if (LogInButton.IsEnabled)
+			//Log in to the account
+			if (Properties.Settings.Default.FirstTime)
+			{
+				System.Windows.Forms.MessageBox.Show("No Administration account found in this computer. Please use the 'Create a New Account' button to create a new administration account to start working with this software", "No account found", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+			}
+			else
 			{
 				LoginAccountGrid.Margin = new Thickness(405, 0, 0, 0);
 
@@ -97,7 +100,6 @@ namespace PCCSDS
 		{
 			LoginAccountGrid.Margin = new Thickness(StartWindow.Width, 0, 0, 0);
 			CreateAccountGrid.Margin = new Thickness(StartWindow.Width, 0, 0, 0);
-
 		}
 
 		private void SignUpCancelButton_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -116,14 +118,46 @@ namespace PCCSDS
 
 		private void LogInButton_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			//Log in to the account
-
+			//Log the user in
+			if (LoginUserName.Text == Properties.Settings.Default._username && LoginPassword.Password == Properties.Settings.Default._password)
+			{
+				//Password and user name matches to the records
+				//Start the application
+				HomePage home = new HomePage();
+				home.Show();
+				Close();
+			}
+			else
+			{
+				MessageBox.Show("Password or User Name does not match, please enter the correct credentials (user name and password). If you're persistently having problems signing in to your account, please be kind to contact the Ultra Admin from the link in the bottom right of the application.", "Credentials does not match", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		private void SignUpBtn_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			//Create a new account
-			
+			//Sign the user up
+			if (CreateUserName.Text.Trim() != "" && CreatePassword.Password.Trim() != "" && CreateConfirmPassword.Password.Trim() != "")
+			{
+				//Everything is okay.
+				//Create the account and log in 
+				if (CreatePassword.Password == CreateConfirmPassword.Password)
+				{
+					//The password and the confirmation is successful
+					Properties.Settings.Default._username = CreateUserName.Text;
+					Properties.Settings.Default._password = CreatePassword.Password;
+					
+					MessageBox.Show("Administration Account creation completed. Now you're being automatically redirected to the PCC Studnet Database System. Thank you for using our software", "Account Successfully Created", MessageBoxButton.OK, MessageBoxImage.Information);
+					
+					//Start the application
+					HomePage home = new HomePage();
+					home.Show();
+					Close();
+				}
+				else
+				{
+					MessageBox.Show("New password and the confirmation does not match. Please make sure that both 'Password' and 'Confirm password' fields are equal in content.", "Passwords does not match", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				}
+			}
 		}
 	}
 }
