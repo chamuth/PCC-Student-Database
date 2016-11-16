@@ -13,6 +13,16 @@ namespace PCCSDS
 		{
 			InitializeComponent();
 			LoginGrid.Margin = new Thickness(StartWindow.Width, 0, 0, 0);
+
+			//Set the options available for you.
+			if (Properties.Settings.Default.FirstTime)
+			{
+				LogInButton.IsEnabled = false;
+			}
+			else
+			{
+				SignUpBtn.IsEnabled = false;
+			}
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,32 +45,38 @@ namespace PCCSDS
 
 		private void CreateAccount_btn_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			CreateAccountGrid.Margin = new Thickness(405, 0, 0, 0);
+			if (CreateAccount_btn.IsEnabled)
+			{
+				CreateAccountGrid.Margin = new Thickness(405, 0, 0, 0);
 
-			DoubleAnimation da = new DoubleAnimation();
-			da.From = 0;
-			da.To = 1;
-			da.Duration = TimeSpan.FromSeconds(1);
-			da.EasingFunction = new QuinticEase();
+				DoubleAnimation da = new DoubleAnimation();
+				da.From = 0;
+				da.To = 1;
+				da.Duration = TimeSpan.FromSeconds(1);
+				da.EasingFunction = new QuinticEase();
 
-			SignUpCancelButton.IsEnabled = true;
+				SignUpCancelButton.IsEnabled = true;
 
-			CreateAccountGrid.BeginAnimation(OpacityProperty, da);
+				CreateAccountGrid.BeginAnimation(OpacityProperty, da);
+			}
 		}
 
 		private void Login_btn_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			LoginAccountGrid.Margin = new Thickness(405, 0, 0, 0);
+			if (LogInButton.IsEnabled)
+			{
+				LoginAccountGrid.Margin = new Thickness(405, 0, 0, 0);
 
-			DoubleAnimation da = new DoubleAnimation();
-			da.From = 0;
-			da.To = 1;
-			da.Duration = TimeSpan.FromSeconds(1);
-			da.EasingFunction = new QuinticEase();
+				DoubleAnimation da = new DoubleAnimation();
+				da.From = 0;
+				da.To = 1;
+				da.Duration = TimeSpan.FromSeconds(1);
+				da.EasingFunction = new QuinticEase();
 
-			LoginCancelButton.IsEnabled = true;
+				LoginCancelButton.IsEnabled = true;
 
-			LoginAccountGrid.BeginAnimation(OpacityProperty, da);
+				LoginAccountGrid.BeginAnimation(OpacityProperty, da);
+			}
 		}
 
 		private void Button_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -86,7 +102,6 @@ namespace PCCSDS
 
 		private void SignUpCancelButton_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-
 			DoubleAnimation da = new DoubleAnimation();
 			da.From = 1;
 			da.To = 0;
@@ -102,12 +117,13 @@ namespace PCCSDS
 		private void LogInButton_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			//Log in to the account
+
 		}
 
 		private void SignUpBtn_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			//Create a new account
-
+			
 		}
 	}
 }

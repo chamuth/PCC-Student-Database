@@ -5,16 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PCCSDS"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="200" d:DesignWidth="200" MouseDown="RectangularContent_MouseDown" MouseLeave="RectangularContent_MouseLeave" MouseUp="RectangularContent_MouseUp">
     <Grid>
         <Ellipse>
             <Ellipse.Fill>
                 <SolidColorBrush Color="White"></SolidColorBrush>
-			</Ellipse.Fill>
-		</Ellipse>
+            </Ellipse.Fill>
+        </Ellipse>
 
-        <Image x:Name="Image1">
-			
-		</Image>
+        <Image x:Name="ButtonImage" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/PCCSDS;component/Resources/Search.png" Height="72" Margin="64,48,0,0" Width="72"/>
+
+        <Ellipse x:Name="Circulator" ClipToBounds="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="0" Height="0">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#4C000000" Offset="0"/>
+                    <GradientStop Color="#3F000000" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+
+        </Ellipse>
+
+        <Label x:Name="ButtonLabel"  FontFamily="Segoe UI" FontSize="18" Foreground="Maroon" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="20,134,20,0">
+            Search
+        </Label>
     </Grid>
 </UserControl>

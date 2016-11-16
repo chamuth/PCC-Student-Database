@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PCCSDS"
         mc:Ignorable="d" ResizeMode="NoResize"
-		WindowStyle="SingleBorderWindow" Title="PCC Student Database Systems" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+		WindowStyle="SingleBorderWindow" Title="PCC Student Database Systems" Height="600" Width="900" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
     <Grid>
-        
-		<!--Set the background color of the grid-->
+
+        <!--Set the background color of the grid-->
         <Grid.Background>
             <LinearGradientBrush>
                 <GradientStop Color="Maroon" Offset="0"></GradientStop>
@@ -16,8 +16,28 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <local:ImageButton HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="300">
-			
-		</local:ImageButton>
+        <local:ImageButton x:Name="Search_Button" HorizontalAlignment="Left" Width="200" Margin="104,203,0,0" Height="200" VerticalAlignment="Top" Src="Resources/Search.png" Text="Search" MouseUp="Search_Button_MouseUp"/>
+
+        <local:ImageButton x:Name="Student_Database" HorizontalAlignment="Left" Width="200" Margin="350,203,0,0" Height="200" VerticalAlignment="Top" Src="Resources/Contact.png" Text="Database" MouseUp="Search_Button_MouseUp"/>
+
+        <local:ImageButton x:Name="Settings" HorizontalAlignment="Left" Width="200" Margin="596,203,0,0" Height="200" VerticalAlignment="Top" Src="Resources/maps.png" Text="Maps" MouseUp="Search_Button_MouseUp"/>
+
+        <Label Content="PCC Student Database" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="40" Margin="104,65,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="401" Background="Gold" Foreground="Maroon"/>
+
+        <Label Foreground="Gold" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="104,466,0,0" Cursor="Hand">
+            Click here for more options
+        </Label>
+
+        <!--Search Menu-->
+        <Grid x:Name="SearchPallete" IsHitTestVisible="False"  IsEnabled="False" Opacity="0" KeyDown="SearchPallete_KeyDown">
+            <Grid.Background>
+                <SolidColorBrush Color="#EE000000"></SolidColorBrush>
+            </Grid.Background>
+
+            <Label Content="Search by Name:" FontSize="14" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="241,226,0,0"></Label>
+            <TextBox x:Name="SearchQueryText" Text="" Width="400" Height="50" Style="{Binding Mode=OneWay, Source={StaticResource PCCSDSTextBox}}" VerticalContentAlignment="Center"  FontSize="25"></TextBox>
+
+            <Label x:Name="AdvancedQueryButton" Content="Advanced Query >" FontSize="13" Foreground="Gold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="241,321,0,0" Cursor="Hand" MouseUp="AdvancedQueryButton_MouseUp"></Label>
+        </Grid>
     </Grid>
 </Window>
