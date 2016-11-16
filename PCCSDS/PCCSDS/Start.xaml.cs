@@ -54,6 +54,8 @@ namespace PCCSDS
 
 					SignUpCancelButton.IsEnabled = true;
 
+					CreateUserName.Focus();
+
 					CreateAccountGrid.BeginAnimation(OpacityProperty, da);
 				}
 			}
@@ -77,6 +79,8 @@ namespace PCCSDS
 				da.EasingFunction = new QuinticEase();
 
 				LoginCancelButton.IsEnabled = true;
+
+				LoginUserName.Focus();
 
 				LoginAccountGrid.BeginAnimation(OpacityProperty, da);
 			}
@@ -145,7 +149,12 @@ namespace PCCSDS
 					//The password and the confirmation is successful
 					Properties.Settings.Default._username = CreateUserName.Text;
 					Properties.Settings.Default._password = CreatePassword.Password;
-					
+
+					//Set the first time to false
+					Properties.Settings.Default.FirstTime = false;
+
+					Properties.Settings.Default.Save();
+
 					MessageBox.Show("Administration Account creation completed. Now you're being automatically redirected to the PCC Studnet Database System. Thank you for using our software", "Account Successfully Created", MessageBoxButton.OK, MessageBoxImage.Information);
 					
 					//Start the application
@@ -156,6 +165,61 @@ namespace PCCSDS
 				else
 				{
 					MessageBox.Show("New password and the confirmation does not match. Please make sure that both 'Password' and 'Confirm password' fields are equal in content.", "Passwords does not match", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				}
+			}
+		}
+
+		private void CreateConfirmPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			if (e.Key == System.Windows.Input.Key.Enter)
+			{
+				//Sign the user up
+				if (CreateUserName.Text.Trim() != "" && CreatePassword.Password.Trim() != "" && CreateConfirmPassword.Password.Trim() != "")
+				{
+					//Everything is okay.
+					//Create the account and log in 
+					if (CreatePassword.Password == CreateConfirmPassword.Password)
+					{
+						//The password and the confirmation is successful
+						Properties.Settings.Default._username = CreateUserName.Text;
+						Properties.Settings.Default._password = CreatePassword.Password;
+
+						//Set the first time to false
+						Properties.Settings.Default.FirstTime = false;
+
+						Properties.Settings.Default.Save();
+
+						MessageBox.Show("Administration Account creation completed. Now you're being automatically redirected to the PCC Studnet Database System. Thank you for using our software", "Account Successfully Created", MessageBoxButton.OK, MessageBoxImage.Information);
+
+						//Start the application
+						HomePage home = new HomePage();
+						home.Show();
+						Close();
+					}
+					else
+					{
+						MessageBox.Show("New password and the confirmation does not match. Please make sure that both 'Password' and 'Confirm password' fields are equal in content.", "Passwords does not match", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+					}
+				}
+			}
+		}
+
+		private void LoginPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			if(e.Key == System.Windows.Input.Key.Enter)
+			{
+				//Log the user in
+				if (LoginUserName.Text == Properties.Settings.Default._username && LoginPassword.Password == Properties.Settings.Default._password)
+				{
+					//Password and user name matches to the records
+					//Start the application
+					HomePage home = new HomePage();
+					home.Show();
+					Close();
+				}
+				else
+				{
+					MessageBox.Show("Password or User Name does not match, please enter the correct credentials (user name and password). If you're persistently having problems signing in to your account, please be kind to contact the Ultra Admin from the link in the bottom right of the application.", "Credentials does not match", MessageBoxButton.OK, MessageBoxImage.Error);
 				}
 			}
 		}

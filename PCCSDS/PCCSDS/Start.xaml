@@ -53,7 +53,7 @@
 
             <Label Foreground="Maroon"  FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,261,0,0" Content="Password:"/>
 
-            <PasswordBox x:Name="LoginPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,294,0,0" Height="30"  IsEnabled="True" HorizontalAlignment="Left" Width="305" Style="{DynamicResource PCCSDSPasswordBox}"/>
+            <PasswordBox x:Name="LoginPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,294,0,0" Height="30"  IsEnabled="True" HorizontalAlignment="Left" Width="305" Style="{DynamicResource PCCSDSPasswordBox}" KeyDown="LoginPassword_KeyDown"/>
 
             <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="84,90,0,0">
                 Login
@@ -78,7 +78,7 @@
 
             <Label  Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="88,323,0,0" Content="Confirm Password:"/>
 
-            <PasswordBox x:Name="CreateConfirmPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,356,0,0" Height="30" Style="{DynamicResource PCCSDSPasswordBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305" />
+            <PasswordBox x:Name="CreateConfirmPassword" FontSize="15" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="92,356,0,0" Height="30" Style="{DynamicResource PCCSDSPasswordBox}" IsEnabled="True" HorizontalAlignment="Left" Width="305"  KeyDown="CreateConfirmPassword_KeyDown"/>
 
             <Label Foreground="Maroon" FontFamily="Segoe UI Light" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="84,73,0,0">
                 New Account
