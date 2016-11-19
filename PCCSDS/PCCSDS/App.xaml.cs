@@ -1,4 +1,6 @@
-﻿using System;
+﻿#undef DEBUG
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -21,8 +23,13 @@ namespace PCCSDS
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
 			//Start the Start.xaml first
-			HomePage s = new HomePage();
+#if DEBUG
+			Database home = new Database();
+			home.Show();
+#else
+			Start s = new Start();
 			s.Show();
+#endif
 		}
 	}
 }

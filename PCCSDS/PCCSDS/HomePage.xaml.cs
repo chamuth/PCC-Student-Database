@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.OleDb;
 
 namespace PCCSDS
 {
@@ -23,8 +25,26 @@ namespace PCCSDS
 		public HomePage()
 		{
 			InitializeComponent();
-		}
 
+			//Connect to the database
+			//	OleDbConnection newcon = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Projects\Ninponix Projects\PCC-Student-Database\PCCSDS\PCCSDS\bin\Debug\Database\PCC.accdb");
+			//	newcon.Open();
+
+			//	//Execute the commands
+			//	string queryString = "INSERT INTO Students VALUES(20222,'ASDASADS','asdasdsad','2332423','asdasdasdasdsasd', 'eadsdsad@asdm.com');";
+			//	OleDbCommand command = new OleDbCommand(queryString, newcon);
+
+			//	//Read the execute reader
+			//	OleDbDataReader reader = command.ExecuteReader();
+
+			//	while (reader.Read())
+			//	{
+			//		MessageBox.Show(reader[0].ToString());
+			//	}
+
+			//	reader.Close();
+			//
+		}
 		private bool isSearchPalleteOpen = false;
 
 		private void Search_Button_MouseUp(object sender, MouseButtonEventArgs e)
