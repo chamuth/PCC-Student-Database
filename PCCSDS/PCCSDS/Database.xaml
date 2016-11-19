@@ -8,6 +8,6 @@
         mc:Ignorable="d" ResizeMode="CanResize"
 		WindowStyle="SingleBorderWindow" Title="PCC Student Database Systems" Height="700" Width="1024" WindowStartupLocation="CenterScreen">
     <Grid>
-		
-    </Grid>
+        
+	</Grid>
 </Window>
